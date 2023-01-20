@@ -20,6 +20,7 @@ def HTMLTemplate(articleTag):
                 {ol}
             </ol>
             {articleTag}
+            <a href="/create/">create</a>
         </body>
         </html>
     '''
@@ -44,4 +45,11 @@ def read(request,id):
 #     return HttpResponse('<h1>Random</h1>'+str(random.random()))
 
 def create(request):
-    return HttpResponse('create!')
+    article = '''
+        <form action="/create/" method="post">
+            <p><input type ="text" name="title" placeholder="title"></p>
+            <p><textarea name="body" placeholder="body"></textarea></p>
+            <p><input type="submit"></p>
+        </form>
+    '''
+    return HttpResponse(HTMLTemplate(article))
